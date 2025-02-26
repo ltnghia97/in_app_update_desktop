@@ -2,7 +2,7 @@
     "name": "In App Update Desktop",
     "version": 2.1,
     "description": ["Added Linux updater"],
-    "macos_file_name": "installers/macos/in_app_update_desktop.dmg",
+    "macos_file_name": "https://raw.githubusercontent.com/ltnghia97/fileupload/refs/heads/main/in_app_update_flutter_windows%201.0.0.dmg",
     "windows_file_name": "installers/windows/in_app_update_desktop.exe",
     "linux_file_name": "installers/linux/in_app_update_desktop.deb",
     "linux_updater": "installers/linux/linux_installer.sh"
