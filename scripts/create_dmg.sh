@@ -1,3 +1,4 @@
+cd ../
 create-dmg \
   "build/macos/Build/Products/Release/in_app_update_desktop.app" \
   "build/macos/" \
