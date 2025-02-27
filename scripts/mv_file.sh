@@ -2,7 +2,6 @@ SOURCE_DIR="../build/macos/"
 DEST_DIR="../app_version_check/installers/macos/"
 VERSION_FILE="../app_version_check/version.json"
 
-
 DMG_PATH=$(find "$SOURCE_DIR" -name "*.dmg" | head -n 1)
 if [ -z "$DMG_PATH" ]; then
     echo "❌ Không tìm thấy file .dmg trong $SOURCE_DIR"
@@ -27,20 +26,20 @@ else
     exit 1
 fi
 
-# Kiểm tra xem có thay đổi nào không
-if [ -z "$(git status --porcelain)" ]; then
-    echo "✅ Không có thay đổi nào để commit."
-    exit 0
-fi
-
-# Thêm tất cả các file đã thay đổi vào git
-git add .
-
-# Tạo thông điệp commit tự động với timestamp
-COMMIT_MESSAGE="Auto commit: $(date +"%Y-%m-%d %H:%M:%S")"
-git commit -m "$COMMIT_MESSAGE"
-
-# Push lên remote (branch hiện tại)
-git push origin "$(git rev-parse --abbrev-ref HEAD)"
-
-echo "🚀 Đã commit và push thành công!"
+## Kiểm tra xem có thay đổi nào không
+#if [ -z "$(git status --porcelain)" ]; then
+#    echo "✅ Không có thay đổi nào để commit."
+#    exit 0
+#fi
+#
+## Thêm tất cả các file đã thay đổi vào git
+#git add .
+#
+## Tạo thông điệp commit tự động với timestamp
+#COMMIT_MESSAGE="Auto commit: $(date +"%Y-%m-%d %H:%M:%S")"
+#git commit -m "$COMMIT_MESSAGE"
+#
+## Push lên remote (branch hiện tại)
+#git push origin "$(git rev-parse --abbrev-ref HEAD)"
+#
+#echo "🚀 Đã commit và push thành công!"

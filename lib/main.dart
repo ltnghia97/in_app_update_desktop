@@ -1,12 +1,10 @@
 import 'dart:convert';
 import 'dart:io';
-
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:package_info_plus/package_info_plus.dart';
 import 'package:path_provider/path_provider.dart';
-
-import 'application.dart';
 
 void main() {
   runApp(const MyApp());
@@ -42,23 +40,7 @@ class _MyHomePageState extends State<MyHomePage> {
   bool isDownloading = false;
   String downloadedFilePath = '';
 
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
-
-  void _decrementCounter() {
-    setState(() {
-      _counter--;
-    });
-  }
-
-  void _clearCounter() {
-    setState(() {
-      _counter = 0;
-    });
-  }
+  String _currentVersion = "...";
 
   showUpdateDialog(Map<String, dynamic> versionJson) {
     final version = versionJson['version'];
@@ -96,7 +78,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 )
                 .toList(),
             const SizedBox(height: 8.0),
-            if (version > ApplicationConfig.currentVersion)
+            if (version != _currentVersion)
               TextButton.icon(
                 onPressed: () {
                   Navigator.pop(context);
@@ -185,6 +167,18 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   @override
+  void initState() {
+    super.initState();
+    _getVersion();
+  }
+
+  void _getVersion() async {
+    PackageInfo packageInfo = await PackageInfo.fromPlatform();
+    _currentVersion = packageInfo.version;
+    setState(() {});
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -221,7 +215,7 @@ class _MyHomePageState extends State<MyHomePage> {
               Padding(
                 padding: const EdgeInsets.only(left: 32.0),
                 child: Text(
-                  'Current version is ${ApplicationConfig.currentVersion}',
+                  'Current version is $_currentVersion',
                 ),
               ),
               const SizedBox(width: 8.0),
