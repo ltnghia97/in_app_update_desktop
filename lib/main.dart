@@ -158,6 +158,24 @@ class _MyHomePageState extends State<MyHomePage> {
     }
     if (Platform.isMacOS) {
       await openDMGFile(downloadedFilePath);
+      //
+      // String scriptPath = '/Users/nghiadev/Documents/personal/in_app_update_desktop/scripts/install_app.sh $downloadedFilePath';
+      //
+      // // Kiểm tra nếu script tồn tại
+      // if (!File(scriptPath).existsSync()) {
+      //   print('❌ Không tìm thấy file $scriptPath');
+      //   return;
+      // }
+      //
+      // // Cấp quyền thực thi cho script (nếu chưa có)
+      // await Process.run('chmod', ['+x', scriptPath]);
+      //
+      // // Chạy script
+      // ProcessResult result = await Process.run(scriptPath, []);
+      //
+      // // In kết quả
+      // print('📜 Output: ${result.stdout}');
+      // print('⚠️ Error: ${result.stderr}');
     }
     if (Platform.isLinux) {
       await openDebFile(downloadedFilePath);
@@ -189,10 +207,10 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Image.network(
-              "https://cdn.shopify.com/s/files/1/0086/0795/7054/files/Golden-Retriever.jpg?v=1645179525",
-              height: 300,
-            ),
+            // Image.network(
+            //   "https://cdn.shopify.com/s/files/1/0086/0795/7054/files/Golden-Retriever.jpg?v=1645179525",
+            //   height: 300,
+            // ),
             SizedBox(height: 20),
             const Text(
               'You have pushed the button this many times:',
@@ -235,7 +253,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   child: CircularProgressIndicator(),
                 ),
                 const SizedBox(width: 8.0),
-                Text('${downloadProgress.toStringAsFixed(1)} %'),
+                Text('${downloadProgress.toStringAsFixed(0)} %'),
               ],
             ),
         ],
