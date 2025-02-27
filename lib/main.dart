@@ -147,7 +147,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Future<Map<String, dynamic>> loadJsonFromGithub() async {
     final response = await http.read(
       Uri.parse(
-        'https://raw.githubusercontent.com/vtaraikovich/in_app_update_desktop/master/app_version_check/version.json',
+        'https://raw.githubusercontent.com/ltnghia97/in_app_update_desktop/refs/heads/master/app_version_check/version.json',
       ),
     );
     return jsonDecode(response);
@@ -162,7 +162,7 @@ class _MyHomePageState extends State<MyHomePage> {
     downloadedFilePath = "${(await getDownloadsDirectory())!.path}/$fileName";
 
     await dio.download(
-      'https://raw.githubusercontent.com/vtaraikovich/in_app_update_desktop/master/app_version_check/$appPath',
+      'https://raw.githubusercontent.com/ltnghia97/in_app_update_desktop/master/app_version_check/$appPath',
       downloadedFilePath,
       onReceiveProgress: (received, total) {
         final progress = (received / total) * 100;
@@ -195,6 +195,11 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
+            Image.network(
+              "https://cdn.shopify.com/s/files/1/0086/0795/7054/files/Golden-Retriever.jpg?v=1645179525",
+              height: 300,
+            ),
+            SizedBox(height: 20),
             const Text(
               'You have pushed the button this many times:',
               style: TextStyle(
@@ -203,7 +208,7 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             Text(
               '$_counter',
-              style: Theme.of(context).textTheme.headline4,
+              style: Theme.of(context).textTheme.headlineMedium,
             ),
           ],
         ),
@@ -239,30 +244,6 @@ class _MyHomePageState extends State<MyHomePage> {
                 Text('${downloadProgress.toStringAsFixed(1)} %'),
               ],
             ),
-          Row(
-            children: [
-              FloatingActionButton(
-                backgroundColor: Colors.purple[700],
-                onPressed: _decrementCounter,
-                tooltip: 'Decrement',
-                child: const Icon(Icons.remove),
-              ),
-              const SizedBox(width: 8.0),
-              FloatingActionButton(
-                backgroundColor: Colors.purple[700],
-                onPressed: _clearCounter,
-                tooltip: 'Clear',
-                child: const Icon(Icons.clear),
-              ),
-              const SizedBox(width: 8.0),
-              FloatingActionButton(
-                backgroundColor: Colors.purple[700],
-                onPressed: _incrementCounter,
-                tooltip: 'Increment',
-                child: const Icon(Icons.add),
-              ),
-            ],
-          ),
         ],
       ),
     );
