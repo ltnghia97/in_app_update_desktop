@@ -1,6 +1,6 @@
 {
     "name": "In App Update Desktop",
-    "version": 2.1,
+    "version": 1.0.0,
     "description": ["Added Linux updater"],
     "macos_file_name": "installers/macos/in_app_update_desktop 1.0.1.dmg",
     "windows_file_name": "installers/windows/in_app_update_desktop.exe",
