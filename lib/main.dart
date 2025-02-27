@@ -207,10 +207,10 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            // Image.network(
-            //   "https://cdn.shopify.com/s/files/1/0086/0795/7054/files/Golden-Retriever.jpg?v=1645179525",
-            //   height: 300,
-            // ),
+            Image.network(
+              "https://cdn.shopify.com/s/files/1/0086/0795/7054/files/Golden-Retriever.jpg?v=1645179525",
+              height: 300,
+            ),
             SizedBox(height: 20),
             const Text(
               'You have pushed the button this many times:',
